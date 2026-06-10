@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>교사 언어 습관 자가 점검 카드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--p:#5B2D8E;--pl:#EDE7F6;--pm:#9C64D0;--t:#00695C;--tl:#E0F2F1;--g:#2E7D32;--gl:#E8F5E9;--b:#1565C0;--bl:#E3F2FD;--o:#E65100;--ol:#FFF3E0;--r:#C62828;--rl:#FFEBEE;--y:#F57F17;--yl:#FFFDE7;--pk:#C2185B;--pkl:#FCE4EC;--gm:#E0E0E0;--gd:#616161;--tx:#1A1A2E;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:#F8F7FC;color:var(--tx);font-size:13px;line-height:1.6;}
+.hdr{background:linear-gradient(135deg,#3E1F63,var(--p),var(--pm));padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 3px 12px rgba(91,45,142,.3);}
+.hdr-t{font-size:15px;font-weight:900;color:#fff;letter-spacing:-.3px;}
+.hdr-s{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px;}
+.tabs{background:#fff;border-bottom:2px solid var(--gm);position:sticky;top:62px;z-index:90;overflow-x:auto;white-space:nowrap;display:flex;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tb{padding:11px 13px;border:none;background:none;font-family:inherit;font-size:12px;font-weight:500;color:var(--gd);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;}
+.tb.on{color:var(--p);border-bottom-color:var(--p);font-weight:700;}
+.content{padding:14px 12px 50px;max-width:700px;margin:0 auto;}
+.pane{display:none;}.pane.on{display:block;animation:fi .2s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.card{background:#fff;border-radius:10px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.07);border:1px solid var(--gm);}
+.ct{font-size:14px;font-weight:700;color:var(--p);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--pl);}
+.mg{border:1px solid var(--gm);border-radius:8px;overflow:hidden;font-size:12px;}
+.ml{background:var(--pl);color:var(--p);font-weight:700;padding:8px 12px;border-bottom:1px solid var(--gm);}
+.mv{padding:8px 12px;border-bottom:1px solid var(--gm);background:#fff;}
+.ib{border-radius:7px;padding:10px 12px;font-size:12px;margin-bottom:12px;display:flex;gap:8px;align-items:flex-start;}
+.ib.pur{background:var(--pl);border-left:3px solid var(--p);color:#3E1F63;}
+.ib.tea{background:var(--tl);border-left:3px solid var(--t);color:#004D40;}
+.ib.yel{background:var(--yl);border-left:3px solid var(--y);color:#4E3500;}
+.ii{font-size:16px;flex-shrink:0;}
+.ctbl{width:100%;border-collapse:collapse;font-size:12px;}
+.ctbl th{background:var(--p);color:#fff;padding:8px 10px;text-align:left;font-weight:700;}
+.ctbl td{padding:8px 10px;border-bottom:1px solid var(--gm);vertical-align:top;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:nth-child(even) td{background:#fafafa;}
+.nb{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--p);color:#fff;font-size:11px;font-weight:700;flex-shrink:0;}
+.tl2{list-style:none;}
+.tl2 li{padding:6px 0 6px 18px;position:relative;font-size:12px;border-bottom:1px dashed var(--gm);}
+.tl2 li:last-child{border-bottom:none;}
+.tl2 li::before{content:'✔';position:absolute;left:0;color:var(--p);font-weight:700;}
+.lm{background:var(--pl);border:2px solid var(--p);border-radius:10px;padding:16px;margin-bottom:14px;text-align:center;transition:border-color .3s;}
+.ls{font-size:40px;font-weight:900;color:var(--p);line-height:1;}
+.ls span{font-size:16px;font-weight:400;color:var(--gd);}
+.lb{display:inline-block;padding:5px 16px;border-radius:16px;font-size:13px;font-weight:700;margin-top:8px;}
+.ld{font-size:12px;margin-top:6px;}
+.pb{height:8px;background:var(--gm);border-radius:4px;margin:10px 0;overflow:hidden;}
+.pf{height:100%;border-radius:4px;background:var(--p);transition:width .4s ease;}
+.ci-hdr{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.if2{background:var(--pl);border-radius:7px;padding:8px 10px;}
+.if2 label{font-size:10px;color:var(--pm);font-weight:700;display:block;margin-bottom:3px;}
+.if2 input,.if2 select{width:100%;border:1px solid var(--pm);border-radius:4px;padding:3px 7px;font-family:inherit;font-size:12px;background:#fff;outline:none;}
+.ah{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:7px 7px 0 0;margin-top:12px;font-size:12px;font-weight:700;}
+.ac{margin-left:auto;font-size:10px;background:rgba(255,255,255,.35);padding:2px 8px;border-radius:10px;}
+.cht{width:100%;border-collapse:collapse;font-size:12px;}
+.cht th{padding:7px 8px;text-align:left;font-size:10px;font-weight:600;background:rgba(0,0,0,.05);}
+.cht td{padding:8px;border-bottom:1px solid var(--gm);vertical-align:middle;}
+.cht tr:last-child td{border-bottom:none;}
+.cht tr.cr td{background:#F9F0FF;}
+.in2{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;}
+.ex{font-size:11px;color:var(--gd);font-style:italic;margin-top:2px;}
+.ctg{display:flex;gap:6px;justify-content:center;}
+.tb2{padding:4px 10px;border:2px solid var(--gm);border-radius:14px;font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;background:#fff;transition:all .15s;color:var(--gd);}
+.tb2.ay{background:var(--rl);border-color:var(--r);color:var(--r);}
+.tb2.an{background:var(--gl);border-color:var(--g);color:var(--g);}
+.lg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.lc{border-radius:8px;padding:12px 14px;border-left:4px solid;transition:all .3s;}
+.lc.hl{box-shadow:0 0 0 3px currentColor;transform:scale(1.02);}
+.lcc{font-size:20px;font-weight:900;margin-bottom:2px;}
+.lcl{font-size:12px;font-weight:700;margin-bottom:4px;}
+.lcd{font-size:11px;line-height:1.5;}
+.cg{border:1px solid var(--gm);border-radius:8px;overflow:hidden;}
+.ch2{display:grid;grid-template-columns:1fr 1fr;}
+.chb{background:var(--r);color:#fff;padding:8px 12px;font-size:12px;font-weight:700;text-align:center;}
+.chg{background:var(--g);color:#fff;padding:8px 12px;font-size:12px;font-weight:700;text-align:center;}
+.crow{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--gm);}
+.crb{background:var(--rl);padding:10px 12px;font-size:11px;font-style:italic;color:#7B1717;border-right:1px solid var(--gm);line-height:1.5;}
+.crb::before{content:'✕ ';font-style:normal;font-weight:700;color:var(--r);}
+.crg{background:var(--gl);padding:10px 12px;font-size:11px;color:#1B5E20;line-height:1.5;}
+.crg::before{content:'○ ';font-weight:700;color:var(--g);}
+.pg{border:1px solid var(--gm);border-radius:8px;overflow:hidden;}
+.pr{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid var(--gm);}
+.pr:last-child{border-bottom:none;}
+.prl{background:var(--pl);color:var(--p);font-size:12px;font-weight:700;padding:10px 12px;display:flex;align-items:center;}
+.prv{padding:10px 12px;background:#fff;}
+.prv textarea{width:100%;border:1px solid var(--gm);border-radius:5px;padding:6px 8px;font-family:inherit;font-size:12px;resize:vertical;min-height:52px;outline:none;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{padding:4px 12px;border:2px solid var(--gm);border-radius:14px;font-size:11px;font-weight:600;cursor:pointer;background:#fff;color:var(--gd);user-select:none;}
+.chip.on{background:var(--p);border-color:var(--p);color:#fff;}
+.cpr{border:1px solid var(--gm);border-radius:7px;overflow:hidden;}
+.cprh{display:grid;grid-template-columns:1fr 1fr;}
+.cprhb{background:var(--rl);color:var(--r);font-size:11px;font-weight:700;padding:6px 10px;text-align:center;}
+.cprhg{background:var(--gl);color:var(--g);font-size:11px;font-weight:700;padding:6px 10px;text-align:center;}
+.cprr{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--gm);}
+.cprr textarea{border:none;padding:6px 8px;font-family:inherit;font-size:11px;resize:none;min-height:40px;outline:none;width:100%;}
+.bi{background:var(--rl);}.gi{background:var(--gl);border-left:1px solid var(--gm);}
+.qrb{background:linear-gradient(135deg,var(--pl),var(--bl));border:2px solid var(--pm);border-radius:10px;padding:16px;display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;margin-bottom:14px;}
+.qrp{width:100px;height:100px;background:#fff;border:2px dashed var(--pm);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;color:var(--pm);text-align:center;gap:4px;}
+.qri{font-size:30px;}
+.qsl{list-style:none;}
+.qsl li{display:flex;gap:8px;margin-bottom:6px;font-size:12px;align-items:flex-start;}
+.qsn{width:20px;height:20px;background:var(--p);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.oig{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.of2{background:var(--tl);border-radius:7px;padding:8px 10px;}
+.of2 label{font-size:10px;color:var(--t);font-weight:700;display:block;margin-bottom:3px;}
+.of2 input{width:100%;border:1px solid var(--t);border-radius:4px;padding:3px 7px;font-family:inherit;font-size:12px;background:#fff;outline:none;}
+.fbs{border:1px solid var(--gm);border-radius:8px;overflow:hidden;margin-top:14px;}
+.fbr{display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--gm);}
+.fbr:last-child{border-bottom:none;}
+.fbl{font-size:11px;font-weight:700;padding:10px 12px;display:flex;align-items:center;}
+.fbv{padding:10px 12px;}
+.fbv textarea{width:100%;border:1px solid var(--gm);border-radius:5px;padding:6px 8px;font-family:inherit;font-size:12px;min-height:52px;resize:vertical;outline:none;}
+.ots{background:var(--tl);border:2px solid var(--t);border-radius:7px;padding:12px;text-align:center;font-size:16px;font-weight:700;color:var(--t);margin:14px 0;}
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:2px dashed var(--pm);border-radius:10px;overflow:hidden;}
+.si{padding:16px 12px;border:1px dashed var(--pm);text-align:center;cursor:pointer;transition:all .2s;user-select:none;position:relative;}
+.si:nth-child(odd){background:var(--pl);}.si:nth-child(even){background:var(--pkl);}
+.si:active{transform:scale(.96);}
+.se{font-size:24px;margin-bottom:6px;}
+.st{font-size:12px;font-weight:700;color:var(--p);line-height:1.4;}
+.si:nth-child(even) .st{color:var(--pk);}
+.sc2{font-size:10px;color:var(--gd);margin-top:4px;font-style:italic;}
+.scp{position:absolute;top:6px;right:6px;background:var(--p);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;opacity:0;transition:opacity .3s;}
+.si.copied .scp{opacity:1;}
+.pgnav{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:2px dashed var(--gm);}
+.nbt{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;border:none;border-radius:9px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;}
+.nbt.next{background:var(--p);color:#fff;flex:1;justify-content:center;box-shadow:0 3px 10px rgba(91,45,142,.3);}
+.nbt.next:active{transform:scale(.97);}
+.nbt.prt{background:#fff;color:var(--p);border:2px solid var(--p);}
+.nbt.prev{background:#fff;color:var(--gd);border:2px solid var(--gm);}
+.rsum{background:linear-gradient(135deg,var(--pl),#fff);border:2px solid var(--p);border-radius:12px;padding:16px;margin-bottom:16px;}
+.rsum-t{font-size:13px;font-weight:700;color:var(--p);margin-bottom:10px;}
+.rsum-main{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.rsum-score{font-size:34px;font-weight:900;color:var(--p);line-height:1;}
+.rsum-score small{font-size:14px;font-weight:400;color:var(--gd);}
+.rsum-lv{padding:5px 16px;border-radius:16px;font-size:13px;font-weight:700;}
+.rsum-areas{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.ra-chip{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;color:#fff;}
+.rsum-empty{font-size:12px;color:var(--gd);font-style:italic;}
+@media(max-width:480px){
+.lg2{grid-template-columns:1fr;}.crow,.ch2{grid-template-columns:1fr;}
+.crb{border-right:none;border-bottom:1px solid var(--gm);}
+.pr{grid-template-columns:1fr;}.prl{border-bottom:1px solid var(--gm);}
+.qrb{grid-template-columns:1fr;}.oig{grid-template-columns:1fr;}.fbr{grid-template-columns:1fr;}
+}
+@media print{.hdr,.tabs,.pgnav{display:none!important;}.pane{display:block!important;}body{background:#fff;}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-t">📋 교사 언어 습관 자가 점검 카드</div>
+  <div class="hdr-s">양성평등교육 현장지원단 · 경기도안성교육지원청 · 양진중학교 장병건</div>
+</header>
+<nav class="tabs">
+  <button class="tb on" id="tab-0" onclick="go(0)">📋 자료개요</button>
+  <button class="tb" id="tab-1" onclick="go(1)">✅ 자가점검</button>
+  <button class="tb" id="tab-2" onclick="go(2)">💬 대조표</button>
+  <button class="tb" id="tab-3" onclick="go(3)">✏️ 실천약속</button>
+  <button class="tb" id="tab-4" onclick="go(4)">👁️ 수업참관</button>
+  <button class="tb" id="tab-5" onclick="go(5)">🏷️ 스티커</button>
+</nav>
+<div class="content">
+
+<div id="pane-0" class="pane on">
+  <div class="card"><div class="ct">📋 기본 정보</div>
+    <div class="mg">
+      <div class="ml">교육지원청</div><div class="mv">경기도안성교육지원청</div>
+      <div class="ml">작성자</div><div class="mv">양진중학교 교사 장병건 · 2026. 6. 22.</div>
+      <div class="ml">자료명</div><div class="mv" style="font-weight:700;color:var(--p)">학교 생활 중 성차별 언어 자가 점검 카드</div>
+      <div class="ml">적용 대상</div><div class="mv">☑ 전체 학교급 &nbsp; ☑ 교직원 &nbsp; ☑ 학부모</div>
+    </div>
+  </div>
+  <div class="card"><div class="ct">📌 활용 방법</div>
+    <ol style="padding-left:18px;font-size:12px;line-height:2.2;">
+      <li>지난 한 달간 수업·생활지도 언어를 떠올리며 <strong>'자가점검' 탭</strong>에서 체크하세요.</li>
+      <li>'해당 있음' 항목은 <strong>'대조표' 탭</strong>에서 대체 표현을 확인하여 개선에 활용하세요.</li>
+      <li>체크 개수는 자동 집계되어 <strong>레벨이 실시간 진단</strong>됩니다.</li>
+      <li>동료 교사 공개수업 참관 시 <strong>'수업참관' 탭</strong>을 활용하세요.</li>
+      <li>점검 결과는 QR코드로 구글 시트에 기록할 수 있습니다.</li>
+    </ol>
+  </div>
+  <div class="card"><div class="ct">🗂️ 자료 구성</div>
+    <table class="ctbl"><thead><tr><th style="width:30px">번호</th><th style="width:130px">구성 요소</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td><span class="nb">①</span></td><td style="font-weight:600">자가 점검 체크리스트</td><td>5개 영역 17개 항목, 자동 집계 및 레벨 진단</td></tr>
+      <tr><td><span class="nb">②</span></td><td style="font-weight:600">진단 레벨 해석표</td><td>Level 1~4 실시간 자동 계산</td></tr>
+      <tr><td><span class="nb">③</span></td><td style="font-weight:600">개선 언어 대조표</td><td>성차별↔양성평등 표현 대조 13쌍</td></tr>
+      <tr><td><span class="nb">④</span></td><td style="font-weight:600">실천 약속 카드</td><td>영역 선택, 약속 기록, 표현 바꾸기 연습</td></tr>
+      <tr><td><span class="nb">⑤</span></td><td style="font-weight:600">수업 참관 체크리스트</td><td>동료 수업 관찰 기록 + 피드백</td></tr>
+      <tr><td><span class="nb">⑥</span></td><td style="font-weight:600">양성평등 표현 스티커</td><td>핵심 문구 12개, 클릭 시 복사</td></tr>
+    </tbody></table>
+  </div>
+  <div class="card"><div class="ct">💡 제작 유의사항</div>
+    <ul class="tl2">
+      <li>점검 항목은 구체적 발화 예시와 판단 기준을 제시한다.</li>
+      <li>동료 교사 수업 참관 시 별도 언어 관찰 체크리스트를 활용한다.</li>
+      <li>개선 표현은 스티커로 제작하여 교탁·수첩에 부착하여 참고한다.</li>
+      <li>QR코드로 구글 폼/시트와 연동, 결과를 누적 기록·분석한다.</li>
+      <li>진단 레벨은 낙인이 아닌 성찰과 개선의 출발점임을 명시한다.</li>
+      <li>교직원 연수와 학부모 교육 모두에 활용 가능하도록 범용적으로 제작한다.</li>
+    </ul>
+  </div>
+  <div class="pgnav">
+    <button class="nbt prt" onclick="window.print()">🖨️ 프린트</button>
+    <button class="nbt next" onclick="go(1)">다음: ✅ 자가점검 →</button>
+  </div>
+</div>
+
+<div id="pane-1" class="pane">
+  <div class="card">
+    <div class="ci-hdr">
+      <div class="if2"><label>소속</label><input type="text" placeholder="학교명"></div>
+      <div class="if2"><label>성명</label><input type="text" placeholder="이름"></div>
+      <div class="if2"><label>점검일자</label><input type="date"></div>
+      <div class="if2"><label>교과</label><input type="text" placeholder="수학 등"></div>
+    </div>
+    <div class="ib yel"><span class="ii">📌</span><div>해당 항목에 체크하세요. <strong>낙인이 아닌 성찰의 도구</strong>입니다.</div></div>
+  </div>
+  <div id="cl-areas"></div>
+  <div class="pgnav">
+    <button class="nbt prev" onclick="go(0)">←</button>
+    <button class="nbt prt" onclick="window.print()">🖨️</button>
+    <button class="nbt next" onclick="go(2)">다음: 💬 결과 확인 →</button>
+  </div>
+</div>
+
+<div id="pane-2" class="pane">
+  <div class="rsum">
+    <div class="rsum-t">📊 나의 자가 점검 결과</div>
+    <div class="rsum-main">
+      <div class="rsum-score"><span id="r-sn">0</span><small> / 17개</small></div>
+      <div class="rsum-lv" id="r-lb" style="background:var(--gl);color:var(--g)">Level 1 · 관심 단계</div>
+    </div>
+    <div id="r-ld" style="font-size:12px;margin-top:8px;color:var(--tx)">평소 언어 습관에 양성평등 의식이 잘 반영되어 있습니다.</div>
+    <div class="rsum-areas" id="r-areas"><span class="rsum-empty">'자가점검' 탭에서 체크하면 영역별 결과가 표시됩니다.</span></div>
+  </div>
+  <div class="card"><div class="ct">📊 진단 레벨 해석표</div>
+    <div class="lg2">
+      <div class="lc" id="lv1" style="background:var(--gl);border-color:var(--g);color:var(--g)"><div class="lcc">0~2개</div><div class="lcl">Level 1 · 관심 단계</div><div class="lcd" style="color:var(--tx)">양성평등 의식이 잘 반영되어 있습니다. 좋은 사례를 동료와 나눠 주세요.</div></div>
+      <div class="lc" id="lv2" style="background:var(--bl);border-color:var(--b);color:var(--b)"><div class="lcc">3~6개</div><div class="lcl">Level 2 · 인식 단계</div><div class="lcd" style="color:var(--tx)">일부 무의식적 표현이 나타납니다. 해당 항목을 집중 점검하세요.</div></div>
+      <div class="lc" id="lv3" style="background:var(--yl);border-color:var(--y);color:var(--y)"><div class="lcc">7~11개</div><div class="lcl">Level 3 · 점검 단계</div><div class="lcd" style="color:var(--tx)">고정관념이 자주 반영됩니다. 동료 참관 후 자기 점검을 권장합니다.</div></div>
+      <div class="lc" id="lv4" style="background:var(--rl);border-color:var(--r);color:var(--r)"><div class="lcc">12개↑</div><div class="lcl">Level 4 · 개선 단계</div><div class="lcd" style="color:var(--tx)">전반적 개선이 필요합니다. 성인지 감수성 연수 및 코칭을 권장합니다.</div></div>
+    </div>
+    <div class="ib tea"><span class="ii">💡</span><div>진단 레벨은 <strong>성찰과 개선의 출발점</strong>입니다.</div></div>
+  </div>
+  <div class="card"><div class="ct">💬 개선 언어 대조표</div>
+    <div class="cg">
+      <div class="ch2"><div class="chb">✕ 성차별적 표현</div><div class="chg">○ 양성평등적 표현</div></div>
+      <div class="crow"><div class="crb">"여자애들은 왜 말없이 앉아 있기만 해?"</div><div class="crg">"각자 표현 방식이 다르니, 조용한 친구도 의견 기회를 주자."</div></div>
+      <div class="crow"><div class="crb">"남자애들은 무조건 리더를 해야지."</div><div class="crg">"리더 역할은 성별과 무관하게, 맡고 싶은 사람에게 맡기자."</div></div>
+      <div class="crow"><div class="crb">"여자애들은 수학보다 문과가 맞을 거야."</div><div class="crg">"모든 학생이 관심 있는 분야에서 도전할 수 있도록 격려할게."</div></div>
+      <div class="crow"><div class="crb">"남자인데 왜 세세한 걸 신경 써?"</div><div class="crg">"세심함과 꼼꼼함은 성별과 무관한 좋은 장점이야."</div></div>
+      <div class="crow"><div class="crb">"남자애들이 울면 이상해 보이니까 참아야 돼."</div><div class="crg">"감정 표현은 자연스러운 일이니, 편하게 이야기해도 괜찮아."</div></div>
+      <div class="crow"><div class="crb">"여자애라서 발표 목소리가 작네."</div><div class="crg">"자신감 있게 목소리 크기와 표현을 함께 연습해 보자."</div></div>
+      <div class="crow"><div class="crb">"남자애는 운동에서 항상 앞장서야 해."</div><div class="crg">"운동은 누구나 즐길 수 있으니, 관심 있는 학생이 참여하게 하자."</div></div>
+      <div class="crow"><div class="crb">"여자는 협력적, 남자는 경쟁심이 강해."</div><div class="crg">"모두가 협력과 경쟁을 함께 배우며 성장하도록 지도할게."</div></div>
+      <div class="crow"><div class="crb">"여자애들은 감성적이라 이성적 판단이 부족해."</div><div class="crg">"판단력과 감정 표현은 누구에게나 중요해."</div></div>
+      <div class="crow"><div class="crb">"무거운 물건은 꼭 남자가 들어야 해."</div><div class="crg">"힘이 되는 사람이 도와주면 좋아. 같이 찾아보자."</div></div>
+      <div class="crow"><div class="crb">"여자는 기술보다 미술·음악이 맞을 거야."</div><div class="crg">"기술, 미술, 음악 모두 성별과 무관하게 배울 수 있어."</div></div>
+      <div class="crow"><div class="crb">"남자답게 안 하면 친구들이 놀릴 수 있잖아."</div><div class="crg">"자신답게 행동하는 게 가장 중요해."</div></div>
+      <div class="crow"><div class="crb">"여자는 교사나 간호사가 안정적이지."</div><div class="crg">"진로는 성별이 아닌 관심과 적성으로 찾아가자."</div></div>
+    </div>
+    <div class="ib yel" style="margin-top:12px;margin-bottom:0"><span class="ii">🏷️</span><div>위 표현은 <strong>'스티커' 탭</strong>에서 인쇄·부착용으로 활용하세요.</div></div>
+  </div>
+  <div class="pgnav">
+    <button class="nbt prev" onclick="go(1)">←</button>
+    <button class="nbt prt" onclick="window.print()">🖨️</button>
+    <button class="nbt next" onclick="go(3)">다음: ✏️ 실천약속 →</button>
+  </div>
+</div>
+
+<div id="pane-3" class="pane">
+  <div class="card"><div class="ct">✏️ 다음 점검까지 나의 실천 약속</div>
+    <div class="pg">
+      <div class="pr"><div class="prl">가장 많이<br>체크된 영역</div>
+        <div class="prv"><div class="chips">
+          <div class="chip" onclick="this.classList.toggle('on')">언어·호칭</div>
+          <div class="chip" onclick="this.classList.toggle('on')">발표·참여</div>
+          <div class="chip" onclick="this.classList.toggle('on')">교과 내용</div>
+          <div class="chip" onclick="this.classList.toggle('on')">생활지도</div>
+          <div class="chip" onclick="this.classList.toggle('on')">진로·미래</div>
+        </div></div>
+      </div>
+      <div class="pr"><div class="prl">해당 항목<br>번호·내용</div>
+        <div class="prv"><textarea placeholder="예) 항목 3번 - 역량을 다른 성별에 빗대어 칭찬&#10;항목 10번 - 성별 능력 차이 당연시"></textarea></div>
+      </div>
+      <div class="pr"><div class="prl">나의 실천<br>약속</div>
+        <div class="prv"><textarea placeholder='예) "수학 잘하면 남자애 같다" 대신 "○○이는 수학적 사고력이 뛰어나다"로 바꾸기'></textarea></div>
+      </div>
+      <div class="pr"><div class="prl">표현<br>바꾸기 연습</div>
+        <div class="prv"><div class="cpr">
+          <div class="cprh"><div class="cprhb">기존 표현</div><div class="cprhg">바꾼 표현</div></div>
+          <div class="cprr"><textarea class="bi" placeholder="개선 전 표현"></textarea><textarea class="gi" placeholder="개선 후 표현"></textarea></div>
+          <div class="cprr"><textarea class="bi" placeholder="개선 전 표현"></textarea><textarea class="gi" placeholder="개선 후 표현"></textarea></div>
+          <div class="cprr"><textarea class="bi" placeholder="개선 전 표현"></textarea><textarea class="gi" placeholder="개선 후 표현"></textarea></div>
+        </div></div>
+      </div>
+      <div class="pr"><div class="prl">다음 점검<br>예정일</div>
+        <div class="prv"><input type="date" style="border:1px solid var(--gm);border-radius:5px;padding:6px 10px;font-family:inherit;font-size:13px;outline:none;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card"><div class="ct">📱 QR코드로 구글 시트 연동</div>
+    <div class="qrb">
+      <div class="qrp"><div class="qri">▦</div><div>QR 코드<br>삽입 공간</div><div style="font-size:9px;color:#aaa">구글 폼 링크</div></div>
+      <ul class="qsl">
+        <li><span class="qsn">1</span> QR코드를 스마트폰으로 스캔</li>
+        <li><span class="qsn">2</span> 구글 폼에서 점검 결과 입력</li>
+        <li><span class="qsn">3</span> 구글 시트에 자동 누적 기록</li>
+        <li><span class="qsn">4</span> 학기별 추이·학교 단위 집계 활용</li>
+      </ul>
+    </div>
+    <div class="ib yel"><span class="ii">🔧</span><div>Google 폼 생성 → 링크 복사 → QR.io 등에서 생성 → 인쇄 삽입</div></div>
+  </div>
+  <div class="pgnav">
+    <button class="nbt prev" onclick="go(2)">←</button>
+    <button class="nbt prt" onclick="window.print()">🖨️</button>
+    <button class="nbt next" onclick="go(4)">다음: 👁️ 수업참관 →</button>
+  </div>
+</div>
+
+<div id="pane-4" class="pane">
+  <div style="background:linear-gradient(135deg,#00695C,#00897B);border-radius:10px;padding:16px;margin-bottom:14px;color:#fff;">
+    <div style="font-size:15px;font-weight:900;margin-bottom:3px">⑤ 수업 참관 언어 관찰 체크리스트</div>
+    <div style="font-size:11px;opacity:.85">동료 교사 공개수업 참관 시 성차별 언어 관찰 기록지</div>
+  </div>
+  <div class="card">
+    <div class="ib tea"><span class="ii">📌</span><div>평가 도구가 아닌 <strong>상호 성장을 위한 성찰적 관찰 도구</strong>입니다.</div></div>
+    <div class="oig">
+      <div class="of2"><label>참관 교사</label><input type="text" placeholder="소속·성명"></div>
+      <div class="of2"><label>수업 교사</label><input type="text" placeholder="성명"></div>
+      <div class="of2"><label>참관 일시</label><input type="date"></div>
+      <div class="of2"><label>교과/학년반</label><input type="text" placeholder="수학 / 1-2"></div>
+    </div>
+  </div>
+  <div id="obs-areas"></div>
+  <div id="ots" class="ots">총 "있음" 체크: <span id="os">0</span>개</div>
+  <div class="card"><div class="ct" style="color:var(--t)">📝 참관 후 피드백</div>
+    <div class="fbs">
+      <div class="fbr"><div class="fbl" style="background:var(--gl);color:var(--g)">✅ 긍정적<br>언어 장면</div><div class="fbv"><textarea placeholder="양성평등적 언어 사용이 돋보였던 장면"></textarea></div></div>
+      <div class="fbr"><div class="fbl" style="background:var(--rl);color:var(--r)">⚠️ 개선<br>필요 장면</div><div class="fbv"><textarea placeholder="성차별적 표현이 관찰된 장면·발화 내용"></textarea></div></div>
+      <div class="fbr"><div class="fbl" style="background:var(--bl);color:var(--b)">💬 피드백<br>의견</div><div class="fbv"><textarea placeholder="수업 교사에게 전달할 건설적 피드백"></textarea></div></div>
+    </div>
+    <div class="ib tea" style="margin-top:12px;margin-bottom:0"><span class="ii">✅</span><div>참관 후 1:1 피드백을 공유하고 <strong>함께 양성평등 수업 문화를 만들어 가세요.</strong></div></div>
+  </div>
+  <div class="pgnav">
+    <button class="nbt prev" onclick="go(3)">←</button>
+    <button class="nbt prt" onclick="window.print()">🖨️</button>
+    <button class="nbt next" onclick="go(5)">다음: 🏷️ 스티커 →</button>
+  </div>
+</div>
+
+<div id="pane-5" class="pane">
+  <div style="background:linear-gradient(135deg,#C2185B,#E91E63);border-radius:10px;padding:16px;margin-bottom:14px;color:#fff;">
+    <div style="font-size:15px;font-weight:900;margin-bottom:3px">🏷️ 양성평등 표현 스티커 시트</div>
+    <div style="font-size:11px;opacity:.85">오려서 교사 수첩 · 교탁 · 모니터에 붙여 두세요!</div>
+  </div>
+  <div class="ib yel"><span class="ii">✂️</span><div>A4 스티커 용지에 출력 → 점선 따라 오리기 → 교탁·수첩에 부착. <strong>탭하면 문구 복사</strong>됩니다.</div></div>
+  <div class="sg" id="sg"></div>
+  <div class="ib pur" style="margin-top:12px"><span class="ii">📖</span><div>원본 전체 표현은 <strong>'대조표' 탭</strong>을 참고하세요.</div></div>
+  <div class="pgnav">
+    <button class="nbt prev" onclick="go(4)">←</button>
+    <button class="nbt prt" onclick="window.print()">🖨️ 스티커 인쇄</button>
+    <button class="nbt next" onclick="go(0)">처음으로 ↺</button>
+  </div>
+</div>
+
+</div>
+<script>
+function go(i){
+  document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('pane-'+i).classList.add('on');
+  document.getElementById('tab-'+i).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(i===2)updResult();
+}
+const CD=[
+  {area:'언어·호칭',c:'#5B2D8E',bg:'#EDE7F6',items:[
+    {n:1,t:'성별 고정관념을 강화하는 칭찬 표현을 사용한다.',e:'"남자답게 씩씩하다", "여자답게 조심성 있다"'},
+    {n:2,t:'신체적 특성을 성별 프레임으로 칭찬하거나 놀린다.',e:'"역시 남자는 힘이 세네", "여자가 그렇지 뭐"'},
+    {n:3,t:'특정 역량이 뛰어난 학생을 다른 성별에 빗대어 칭찬한다.',e:'"수학 잘하는 거 보면 남자애 같아"'},
+    {n:4,t:'학급 전체를 지적할 때 특정 성별로 통칭한다.',e:'"남자들, 조용히 해!", "여자들 수다 그만"'},
+  ]},
+  {area:'발표·참여',c:'#1565C0',bg:'#E3F2FD',items:[
+    {n:5,t:'발표자 지목 시 성별 구분을 우선시한다.',e:'"남학생 먼저, 그 다음 여학생"'},
+    {n:6,t:'어려운 질문을 특정 성별 학생에게 주로 묻는다.',e:'"이 문제는 여학생 중에 누가 풀어볼까?"'},
+    {n:7,t:'리더 역할 배정 시 성별 고정관념을 적용한다.',e:'"체육부장은 남자가 맡아야 다들 말 잘 듣지"'},
+  ]},
+  {area:'교과 내용 및 학습자료',c:'#2E7D32',bg:'#E8F5E9',items:[
+    {n:8,t:'교과서·삽화 속 직업 성별 편향을 무비판적으로 지나친다.',e:'"의사 아버지, 간호사 어머니" 보정 없이 넘어감'},
+    {n:9,t:'교과서 지문의 성 고정관념에 코멘트 없이 넘어간다.',e:'"엄마는 요리, 아빠는 뉴스"를 그냥 읽음'},
+    {n:10,t:'성별에 따른 능력 차이를 당연시하는 발언을 한다.',e:'"남자는 공간 감각이 좋아", "여자는 암기를 잘해"'},
+  ]},
+  {area:'생활지도',c:'#E65100',bg:'#FFF3E0',items:[
+    {n:11,t:'청소·비품 이동 시 역할을 성별로 배정한다.',e:'"무거운 건 남자가, 닦는 건 여자가"'},
+    {n:12,t:'체육 활동에서 성별에 따라 다른 기준을 적용한다.',e:'"여자는 절반만 뛰어도 돼"'},
+    {n:13,t:'학생의 감정 표현에 성별 기준을 적용한다.',e:'"남자가 왜 울어?", "여자가 화내면 안 좋아"'},
+    {n:14,t:'복장 지도 시 특정 성별에만 엄격한 기준을 적용한다.',e:'"여학생은 단정해야지", "남학생이니까 괜찮아"'},
+  ]},
+  {area:'진로 및 미래지향',c:'#C2185B',bg:'#FCE4EC',items:[
+    {n:15,t:'진로 상담 시 성별 직업 분업 의식을 드러낸다.',e:'"여자는 교사나 간호사가 안정적이지"'},
+    {n:16,t:'미래 가정 내 역할을 특정 성별의 의무로 단정 짓는다.',e:'"나중에 엄마가 되면 다 이해할 거야"'},
+    {n:17,t:'특정 학문을 특정 성별의 전유물처럼 묘사한다.',e:'"여자애가 수학을 잘하면 공대 가도 되겠다"'},
+  ]},
+];
+const OD=[
+  {area:'언어·호칭',c:'#00695C',bg:'#E0F2F1',items:[
+    {n:1,t:'특정 성별을 집단으로 지칭하는 표현을 사용한다.',e:'"남자들!", "여자들!"'},
+    {n:2,t:'칭찬·지적 시 성별 고정관념을 강화하는 표현을 사용한다.',e:'"역시 남자는...", "여자답게..."'},
+    {n:3,t:'학생의 역량이나 행동을 다른 성별에 빗대어 표현한다.',e:'"남자애 같네", "여자애처럼"'},
+  ]},
+  {area:'발표·참여',c:'#1565C0',bg:'#E3F2FD',items:[
+    {n:4,t:'발표자 지목 시 성별로 구분한다.',e:'"남학생 먼저", "여학생 중에서"'},
+    {n:5,t:'어려운 질문은 특정 성별에게 주로 묻는다.',e:'남학생 위주로 어려운 문제 지목'},
+    {n:6,t:'리더·역할 배정 시 성별을 기준으로 삼는다.',e:'"체육부장은 남자가..."'},
+  ]},
+  {area:'교과 내용',c:'#2E7D32',bg:'#E8F5E9',items:[
+    {n:7,t:'교과서 성 편향을 수정·언급 없이 넘어간다.',e:'성별 직업 편향 삽화 무비판적 활용'},
+    {n:8,t:'성별에 따른 학습 능력 차이를 당연시한다.',e:'"남자는 공간 감각이 좋아"'},
+  ]},
+  {area:'생활지도',c:'#E65100',bg:'#FFF3E0',items:[
+    {n:9,t:'청소·정리 역할을 성별로 나누어 지시한다.',e:'"무거운 건 남자가, 닦는 건 여자가"'},
+    {n:10,t:'학생의 감정 표현에 성별 기준을 적용한다.',e:'"남자가 왜 울어?"'},
+    {n:11,t:'복장·용모 지도 시 특정 성별에만 엄격하다.',e:'"여학생은 단정히..."'},
+  ]},
+  {area:'진로 관련',c:'#C2185B',bg:'#FCE4EC',items:[
+    {n:12,t:'진로나 미래 역할을 성별로 단정 짓는다.',e:'"여자는 교사가 안정적"'},
+  ]},
+];
+const CS={},OS={};
+function buildCL(data,cid){
+  const c=document.getElementById(cid);let h='';
+  data.forEach(a=>{
+    const ak=a.area.replace(/[·\s]/g,'');
+    h+=`<div style="background:#fff;border-radius:8px;overflow:hidden;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.07);border:1px solid #e0e0e0">`;
+    h+=`<div class="ah" style="background:${a.bg};color:${a.c}"><span>●</span><span>${a.area}</span><span class="ac" style="background:${a.c};color:#fff" id="ac-${cid}-${ak}">0/${a.items.length}</span></div>`;
+    h+=`<table class="cht"><thead><tr><th style="width:30px">번호</th><th>항목</th><th style="width:90px">없음/있음</th></tr></thead><tbody>`;
+    a.items.forEach(it=>{
+      h+=`<tr id="rw-${cid}-${it.n}"><td><span class="in2" style="background:${a.c}">${it.n}</span></td><td><div>${it.t}</div><div class="ex">${it.e}</div></td><td><div class="ctg"><button class="tb2" id="no-${cid}-${it.n}" onclick="sc('${cid}',${it.n},'no','${ak}',${a.items.length})">없음</button><button class="tb2" id="ye-${cid}-${it.n}" onclick="sc('${cid}',${it.n},'yes','${ak}',${a.items.length})">있음</button></div></td></tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  });
+  c.innerHTML=h;
+}
+function sc(cid,n,v,ak,tot){
+  const k=cid+'-'+n,isCL=cid==='cl-areas';
+  if(isCL)CS[k]=(v==='yes');else OS[k]=(v==='yes');
+  const ye=document.getElementById(`ye-${cid}-${n}`),no=document.getElementById(`no-${cid}-${n}`),rw=document.getElementById(`rw-${cid}-${n}`);
+  if(v==='yes'){ye.classList.add('ay');no.classList.remove('an');rw.classList.add('cr');}
+  else{no.classList.add('an');ye.classList.remove('ay');rw.classList.remove('cr');}
+  const data=isCL?CD:OD,aItems=data.find(d=>d.area.replace(/[·\s]/g,'')===ak)?.items||[],st=isCL?CS:OS;
+  const cnt=aItems.filter(i=>st[cid+'-'+i.n]).length;
+  const el=document.getElementById(`ac-${cid}-${ak}`);if(el)el.textContent=`${cnt}/${tot}`;
+  if(isCL)updScore();else updObs();
+}
+function lvInfo(s){
+  if(s<=2)return{lv:'Level 1 · 관심 단계',desc:'평소 언어 습관에 양성평등 의식이 잘 반영되어 있습니다.',bg:'var(--gl)',c:'var(--g)',id:'lv1'};
+  if(s<=6)return{lv:'Level 2 · 인식 단계',desc:'일부 상황에서 무의식적 표현이 나타납니다. 해당 항목을 집중 점검하세요.',bg:'var(--bl)',c:'var(--b)',id:'lv2'};
+  if(s<=11)return{lv:'Level 3 · 점검 단계',desc:'성별 고정관념이 자주 반영됩니다. 동료 참관 후 자기 점검을 권장합니다.',bg:'var(--yl)',c:'var(--y)',id:'lv3'};
+  return{lv:'Level 4 · 개선 단계',desc:'전반적 개선이 필요합니다. 성인지 감수성 연수 및 코칭을 권장합니다.',bg:'var(--rl)',c:'var(--r)',id:'lv4'};
+}
+function updScore(){/* 결과는 대조표 탭 상단에서 표시 */}
+function updResult(){
+  const s=Object.values(CS).filter(Boolean).length;
+  const f=lvInfo(s);
+  document.getElementById('r-sn').textContent=s;
+  const rlb=document.getElementById('r-lb');rlb.textContent=f.lv;rlb.style.background=f.bg;rlb.style.color=f.c;
+  document.getElementById('r-ld').textContent=f.desc;
+  const ra=document.getElementById('r-areas');
+  let chips='';let any=false;
+  CD.forEach(a=>{
+    const cnt=a.items.filter(i=>CS['cl-areas-'+i.n]).length;
+    if(cnt>0){any=true;chips+=`<span class="ra-chip" style="background:${a.c}">${a.area} ${cnt}개</span>`;}
+  });
+  ra.innerHTML=any?chips:'<span class="rsum-empty">체크된 항목이 없습니다. 모든 영역에서 양성평등적 언어를 잘 사용하고 계시네요! 👏</span>';
+  ['lv1','lv2','lv3','lv4'].forEach(id=>document.getElementById(id).classList.remove('hl'));
+  document.getElementById(f.id).classList.add('hl');
+}
+function updObs(){document.getElementById('os').textContent=Object.values(OS).filter(Boolean).length;}
+const SK=[
+  {e:'💬',t:'"자신답게 행동하는 게\n가장 중요해."'},
+  {e:'💗',t:'"감정을 표현하는 건\n자연스러운 일이야."'},
+  {e:'🤝',t:'"리더 역할은 성별과\n무관하게 정하자."'},
+  {e:'🌟',t:'"모두가 잘하는 분야를\n찾아 도전!"'},
+  {e:'📢',t:'"발표 순서는 공평하게,\n모두 차례대로."'},
+  {e:'🔍',t:'"세심함은 성별과\n무관한 좋은 장점."'},
+  {e:'🌱',t:'"협력도 경쟁도\n모두에게 필요해."'},
+  {e:'📚',t:'"모든 과목은 누구나\n배울 수 있어."'},
+  {e:'🧠',t:'"능력 차이는 성별이\n아닌 개인 특성!"'},
+  {e:'⚽',t:'"운동은 누구나\n즐길 수 있는 활동."'},
+  {e:'💪',t:'"역할은 힘이 되는\n사람이 돕는 것."'},
+  {e:'🚀',t:'"진로는 관심과\n적성으로 찾아가자!"'},
+];
+function buildStickers(){
+  document.getElementById('sg').innerHTML=SK.map(s=>`<div class="si" onclick="cpS(this,'${s.t.replace(/\n/g,' ')}')"><span class="scp">복사됨!</span><div class="se">${s.e}</div><div class="st">${s.t.replace(/\n/g,'<br>')}</div><div class="sc2">✂ 오려서 붙이세요</div></div>`).join('');
+}
+function cpS(el,t){if(navigator.clipboard)navigator.clipboard.writeText(t);el.classList.add('copied');setTimeout(()=>el.classList.remove('copied'),1500);}
+buildCL(CD,'cl-areas');buildCL(OD,'obs-areas');buildStickers();
+</script>
+</body>
+</html>
